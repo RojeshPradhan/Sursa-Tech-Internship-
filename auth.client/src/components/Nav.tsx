@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Nav = (props: { name: string, setName: (name: string) => void }) => {
@@ -8,9 +8,18 @@ const Nav = (props: { name: string, setName: (name: string) => void }) => {
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',
         });
-
+        localStorage.removeItem("token");
         props.setName('');
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            // If token exists, set the user's name or perform any other necessary actions
+            // For now, let's assume the user is logged in with the name 'user'
+            props.setName('user');
+        }
+    }, []);
 
     let menu;
 

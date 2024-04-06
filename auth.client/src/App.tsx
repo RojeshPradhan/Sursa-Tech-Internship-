@@ -30,7 +30,7 @@ function App() {
             <BrowserRouter>
                 <Nav name={name} setName={setName}/>
 
-                <main className="form-signin">
+                <main className="container">
                     <Routes>
                         <Route path="/" Component={() => <Home name={name} />} />
                         <Route path="/login" Component={() => <Login setName={setName} />} />

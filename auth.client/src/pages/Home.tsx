@@ -1,9 +1,16 @@
 import React from "react";
+import Content from "../components/Content";
+
 
 const Home = (props: { name: string }) => {
+    const token = localStorage.getItem("token");
+
     return (
         <div>
-            {props.name ? 'Hi ' + props.name : 'You are not logged in'}
+            {token ? 'Welcome!' : props.name ? 'Hi ' + props.name : 'You are not logged in'}
+            <Content/>
+
+            
         </div>
     );
 };

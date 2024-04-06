@@ -10,6 +10,8 @@ namespace Auth.Server.Data
         }
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Course> Courses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(entity => {

@@ -60,7 +60,7 @@ namespace Auth.Controllers
                     HttpOnly = true
                 });
 
-                return Ok(new { message = "Success" });
+                return Ok(new { message = "Success", token = jwtString });
             }
             catch (Exception ex)
             {

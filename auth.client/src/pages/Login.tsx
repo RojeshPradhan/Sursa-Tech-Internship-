@@ -1,10 +1,11 @@
 import React, { SyntheticEvent, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = (props: { setName: (name: string) => void }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
     const [redirect, setRedirect] = useState(false);
 
     const submit = async (e: SyntheticEvent) => {
@@ -21,14 +22,15 @@ const Login = (props: { setName: (name: string) => void }) => {
         });
 
         const content = await response.json();
-
-        setRedirect(true);
+        localStorage.setItem("token", content.token);
         props.setName(content.name);
+        setRedirect(true);
+        if (content) {
+            navigate("/");
+        }
+       
     }
-
-    if (redirect) {
-        return <Navigate to="/" />;
-    }
+   
 
     return (
         <form onSubmit={submit}>
