@@ -5,6 +5,8 @@ import Nav from "./components/Nav";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import CourseDetails from "./pages/CourseDetails";
+import AddCourse from "./pages/AddCourse";
 
 function App() {
     const [name, setName] = useState('');
@@ -35,6 +37,8 @@ function App() {
                         <Route path="/" Component={() => <Home name={name} />} />
                         <Route path="/login" Component={() => <Login setName={setName} />} />
                         <Route path="/register" Component={Register} />
+                        <Route path="/courses/Add" Component={AddCourse} />
+                        <Route path="/courses/:courseId" Component={CourseDetails} />
                     </Routes>
                 </main>
             </BrowserRouter>

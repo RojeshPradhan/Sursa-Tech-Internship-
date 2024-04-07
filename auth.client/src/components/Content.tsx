@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Routes, Route } from 'react-router-dom';
 
 interface Course {
     id: number;
@@ -28,30 +28,21 @@ const Content = () => {
     }, []);
 
     const handleEdit = (id: number) => {
-        // Handle edit action
         console.log('Edit course with ID:', id);
     };
 
     const handleDelete = (id: number) => {
-        // Handle delete action
         console.log('Delete course with ID:', id);
     };
-    const handleAdd = (id: number) => {
-        // Handle Add action
-        console.log('Add course with ID:', id);
-    };
-    const handleAddCourse = () => {
-        // Implement logic to add a new course
-        console.log('Add course button clicked');
-    };
+ 
 
     return (
         <div>
             <h2>Courses
             </h2>
-            <button type="button" className="btn btn-primary mb-2" onClick={handleAddCourse}>
+            <Link to='/courses/Add'><button type="button" className="btn btn-primary mb-2">
                + Add Course
-            </button>
+            </button></Link>
             <table className="table">
                 <thead>
                     <tr>
@@ -65,7 +56,7 @@ const Content = () => {
                     {courses.map(course => (
                         <tr key={course.id}>
                             <td>{course.id}</td>
-                            <td><Link to='/'>{course.title}</Link></td>
+                            <td><Link to={`/courses/${course.id}`}>{ course.title }</Link></td>
                             <td>
                                 <button
                                     type="button"
